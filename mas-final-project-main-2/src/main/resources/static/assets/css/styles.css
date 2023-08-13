@@ -1,0 +1,43 @@
+/* Set the body background color to a very light gray */
+body {
+    background-color: lightgray;
+}
+
+/* Style the heading with a darker gray background */
+h1 {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+}
+
+.change-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #f0cd35;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+.view-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #9145ed;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 10px;
+    font-weight: bold; /* Set font weight to bold */
+}
+
+.cover.cover-music-1 {
+    background-color: #FF0000; /* Red */
+}
+
+.cover.cover-music-2 {
+    background-color: #00FF00; /* Green */
+}
+
+.cover.cover-music-3 {
+    background-color: #0000FF; /* Blue */
+}

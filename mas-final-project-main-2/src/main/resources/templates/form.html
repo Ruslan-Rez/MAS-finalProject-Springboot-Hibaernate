@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:temporals="java.time.temporal.TemporalAccessorUtils">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Medical Record</title>
+    <link rel="stylesheet" th:href="@{/assets/css/MAS.css}">
+</head>
+<body>
+<header class="main-header">
+    <h1 class="cf-name">Medical Records</h1>
+</header>
+<main class="container content-section">
+    <h2 class="section">Add new Medical Record for Patient <span th:text="${patientName}" /> </h2>
+    <div class="add">
+        <form class="form form-edit" th:action="@{/hospital/add/{patientId}(patientId=${patientId})}" th:modelAttribute="medicalRecord" method="post" >
+            <label for="recordDate">Record date: </label>
+            <br>
+            <input type="date" name="recordDate" id="recordDate" required th:value="${#temporals.format(medicalRecord.recordDate, 'yyyy-MM-dd')}" />
+            <span id="errorRecordDate"></span>
+            <br>
+            <label for="itemType">Patient: </label>
+            <br>
+            <select type="text" name="itemType" id="itemType" disabled>
+                <option>-- Select Item Type --</option>
+                <option value="1" selected><span th:text="${patientName}" /></option>
+                <option value="2">Pants</option>
+                <option value="3">Shoes</option>
+            </select>
+            <br>
+            <label for="weight">Weight: </label>
+            <br>
+            <input type="number" name="weight" id="weight" min="2" required th:value="${medicalRecord.weight}"/>
+            <span id="errorWeight"></span>
+            <br>
+            <label for="height">Height: </label>
+            <br>
+            <input type="number" name="height" id="height" min="63" required th:value="${medicalRecord.height}" />
+            <span id="errorHeight"></span>
+            <br>
+            <label for="bloodSugar">Blood Sugar: </label>
+            <br>
+            <input type="number" name="bloodSugar" id="bloodSugar" min="0"required th:value="${medicalRecord.bloodSugar}" />
+            <span id="errorBloodSugar"></span>
+            <br>
+            <div class="form-btns">
+                <a class="btn btn-cancel" th:href="@{/hospital/patients/{id}(id=${patientId})}">Cancel</a>
+                <input class="btn btn-primary submit-btn" type="submit" value="Add" />
+            </div>
+        </form>
+    </div>
+</main>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:temporals="java.time.temporal.TemporalAccessorUtils">
+<head>
+    <meta charset="UTF-8">
+    <title>Medical Records</title>
+    <link rel="stylesheet" th:href="@{/assets/css/MAS.css}">
+</head>
+<body>
+<header class="main-header">
+    <h1 class="cf-name">Medical Records</h1>
+</header>
+<main class="container content-section">
+    <h2 class="section">Medical Records of Patient <span th:text="${patientName}" /> </h2>
+   <div th:if="${!#lists.isEmpty(medicalRecords)}">
+    <table class="table-list table-md">
+        <thead>
+        <tr>
+            <th>Record Date</th>
+            <th>Weight</th>
+            <th>Height</th>
+            <th>Blood Sugar</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="medicalRecord : ${medicalRecords}">
+            <td th:text="${medicalRecord.recordDate}"></td>
+            <td th:text="${medicalRecord.weight} + ' kg'"></td>
+            <td th:text="${medicalRecord.height} + ' cm'"></td>
+            <td th:text="${medicalRecord.bloodSugar} + ' mg/dL'"></td>
+            <td>
+                <ul class="list-actions">
+                    <li><a class="btn btn-primary" href="">Edit</a> </li>
+                    <li><a class="btn btn-primary" href="">Delete</a> </li>
+                </ul>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+   </div>
+    <p>
+    <ul class="list-actions btns">
+        <li><a class="btn btn-primary submit-btn" th:href="@{/hospital/patients}">Back</a></li>
+        <li><a class="btn btn-primary submit-btn" th:href="@{/hospital/add/{patientId}(patientId=${patientId})}">Add New</a></li>
+    </ul>
+    </p>
+
+</main>
+<script th:src="@{/assets/bootstrap/js/bootstrap.min.js}"></script>
+</body>
+</html>
